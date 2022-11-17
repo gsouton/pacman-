@@ -1,3 +1,6 @@
+# CMAKE
+build/
+build/**
 # Prerequisites
 *.d
 
