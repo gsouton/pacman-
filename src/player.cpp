@@ -22,6 +22,6 @@ void Player::update() {
     Position next_position = m_position.next(m_direction);
     if (m_world.is_position_walkable(next_position)){
         m_position.move(m_direction);
-        m_world.updatePostion(m_position, PLAYER);
+        m_world.update_position(m_position, PLAYER);
     }
 }
