@@ -1,3 +1,4 @@
 # pacman
 
-Scratch implementation of pacman in C++.
+Implementation from scratch of pacman in C++.
+
