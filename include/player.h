@@ -1,20 +1,13 @@
 #pragma once
+#include "entity.h"
 #include "types.h"
 
-enum Direction {
-    NORTH,
-    SOUTH,
-    EAST,
-    WEST
-};
-
-class Player {
+class Player: Entity {
     public:
-        Player();
+        Player(World& world);
         bool is_alive();
+        void update() override;
 
     private:
         u32 m_lives;
-        Direction m_direction;
-        Position m_position;
 };

@@ -1,4 +1,5 @@
 #include "world.h"
+#include "SDL_shape.h"
 #include "spdlog/spdlog.h"
 #include <cerrno>
 #include <iostream>
@@ -60,8 +61,25 @@ u32 World::height() const{
     return m_map.height();
 }
 
-char World::at(u32 x, u32 y){
-    return m_map.get(x, y);
-
+MAP_SLOT World::at(u32 x, u32 y){
+    return m_map.at(x, y);
 }
+
+bool World::valid_position(const Position& position){
+ return position.x < 0 || position.x >= width() || position.y < 0 || position.y >= height();
+}
+
+bool World::is_position_walkable(const Position& position){
+    if (position.x < 0 || position.x >= width() || position.y < 0 || position.y >= height()) return false;
+    MAP_SLOT elem = at(position.x, position.y);
+    if(elem == FOOD || elem == EMPTY) return true;
+    return false;
+}
+
+void World::update_position(Position position, MAP_SLOT slot){
+    m_map.set(position, slot);
+}
+
+
+
 

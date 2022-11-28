@@ -1,6 +1,14 @@
 #pragma once
 #include "player.h"
+#include "screen.h"
 #include "world.h"
+
+#include "spdlog/spdlog.h"
+#include <cstdio>
+#include <iostream>
+#include <iterator>
+#include <stdio.h>
+#include <unistd.h>
 
 class Game {
   public:
@@ -8,10 +16,15 @@ class Game {
     ~Game();
     void run();
     bool game_over();
-    void render();
-    void clear();
 
   private:
     World m_world;
     Player m_player;
+    Screen m_screen;
+    Entity *m_entities;
+
+  private:
+    void render();
+    void update();
+    void clear();
 };

@@ -2,6 +2,9 @@
 
 Map::Map() {}
 
+Map::~Map(){
+    delete[] m_data;
+}
 void Map::set(u32 width, u32 height, char *char_map) {
     m_food_amount = 0;
     u32 size = width * height;
@@ -53,9 +56,13 @@ u32 Map::height() const {
     return m_height;
 }
 
-char Map::get(u32 x, u32 y){
+MAP_SLOT Map::at(u32 x, u32 y){
     MAP_SLOT slot = m_data[y * m_width + x];
-    return map_slot_to_char(slot);
+    return slot;
+}
+
+void Map::set(Position& position, MAP_SLOT slot){
+    m_data[position.y * m_width + position.x] = slot;
 }
 
 
